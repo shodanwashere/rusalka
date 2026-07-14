@@ -1,6 +1,21 @@
 # rusalka
 C implementation of number sequence cipher as seen in Call of Duty: Black Ops as described in [this Steam forum post](https://steamcommunity.com/sharedfiles/filedetails/?id=2583087495).
 
+## Usage
+
+In order to use this library in your project, build it using gcc and the archiver.
+
+```
+$ gcc -c rusalka.c -o rusalka.o
+$ ar rcs librusalka.a rusalka.o
+
+```
+Once that is done, just use it on your project, then link the library.
+
+```
+gcc main.c -L. -lrusalka -o main
+```
+
 ---
 ## Explanation
 In the world of "Black Ops", the Soviet Union decided to use encoded number sequences to communicate with sleeper agents in the U.S.
