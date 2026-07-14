@@ -53,4 +53,4 @@ RUSALKAGULFOFMEXICOPROJECTNOVAINITIATEDAWAITINSTRUCTIONS
 
 > "Cuban allies authorize construction of permanent broadcast station Rusalka. Gulf of Mexico. Project Nova Initiated. Await instructions."
 
-Some context can be lost due to pack of punctuation and spaces, but it can be inferred. This process can be completely reversed in order to obtain encoded messages, as seen in the code present in `main.c`.
+Some context can be lost due to lack of punctuation and spaces, but it can be inferred. This process can be completely reversed in order to obtain encoded messages, as seen in the code present in `main.c`.
