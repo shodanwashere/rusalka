@@ -6,7 +6,7 @@
 
 char* generateKey(char* plaintext, char* key){
   int x = strlen(plaintext);
-  char* newKey = (char*) malloc(sizeof(char) * x);
+  char* newKey = (char*) malloc(sizeof(char) * (x+1));
   int i, j;
   for (i = 0, j = 0; j < x; i++, j++) {
     if (x == i)
@@ -19,7 +19,7 @@ char* generateKey(char* plaintext, char* key){
 
 char* cipherText(char* plaintext, char* cyclicKey){
   int x = strlen(plaintext);
-  char* cipherText = (char*) malloc((sizeof(char) * x)+1);
+  char* cipherText = (char*) malloc(sizeof(char) * (x+1));
   int i;
   for (i = 0; i < x; i++){
     char z = (plaintext[i] + cyclicKey[i]) % 26;
@@ -32,7 +32,7 @@ char* cipherText(char* plaintext, char* cyclicKey){
 
 char* originalText(char* cipherText, char* cyclicKey){
   int x = strlen(cipherText);
-  char* plaintext = (char*) malloc((sizeof(char) * x)+1);
+  char* plaintext = (char*) malloc(sizeof(char) * (x+1));
   int i;
   for(i = 0; i < x; i++){
     char z = (cipherText[i] - cyclicKey[i] + 26) % 26;
@@ -47,8 +47,9 @@ struct unsigned_int_ptr sequence(char* text){
   int x = strlen(text);
   struct unsigned_int_ptr numberSequence;
   numberSequence.p = (unsigned int*) malloc(sizeof(unsigned int) * x);
-  numberSequence.size = (sizeof(unsigned int) * x);
+  numberSequence.size = (x);
   for(int i = 0; i < x; i++){
+    if(text[i] == '\0') break;
     unsigned int z = (unsigned int) text[i] - 65; // 65 = 'A' in ASCII table
     numberSequence.p[i] = z;
   }
@@ -56,8 +57,8 @@ struct unsigned_int_ptr sequence(char* text){
 }
 
 char* desequence(struct unsigned_int_ptr numberSequence){
-  int x = numberSequence.size/sizeof(unsigned int);
-  char* cipherText = (char*) malloc((sizeof(char) * x)+1);
+  int x = numberSequence.size;
+  char* cipherText = (char*) malloc(sizeof(char) * (x+1));
   int i;
   for(i = 0; i < x; i++){
     char z = ((char) numberSequence.p[i]) + 65;
@@ -70,7 +71,7 @@ char* desequence(struct unsigned_int_ptr numberSequence){
 char* strip(char* text){
   // unfortunately uses more memory than needed but whatever
   int x = strlen(text);
-  char* strippedText = (char*) malloc(sizeof(char) * x);
+  char* strippedText = (char*) malloc(sizeof(char) * (x+1));
   int c = 0;
   for(int i = 0; i < x; i++){
     if(isalnum(text[i])){
